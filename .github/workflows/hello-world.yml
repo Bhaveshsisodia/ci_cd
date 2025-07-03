@@ -1,12 +1,26 @@
-# .github/workflows/hello-world.yml
-name: Hello World
+# .github/workflows/hello.yml
+name: Trigger Practice
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  say-hello:
+  explore:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print a greeting
-        run: echo "👋 Hello from GitHub Actions!"
+      - name: Step 1: Say hello
+        run: echo "👋 Hello, ${{ github.actor }}!"
+
+      - name: Step 2: Show current directory
+        run: pwd
+
+      - name: Step 3: List files
+        run: ls -al
+
+      - name: Step 4: Show date and time
+        run: date
