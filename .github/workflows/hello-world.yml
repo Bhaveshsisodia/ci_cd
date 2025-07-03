@@ -1,25 +1,11 @@
-name: Trigger Practice
+name: Check Actor
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
   workflow_dispatch:
 
 jobs:
-  explore:
+  who-am-i:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Step 1: Say hello
-        run: echo 👋 Hello, ${{ github.actor }}!
-
-      - name: Step 2: Show current directory
-        run: pwd
-
-      - name: Step 3: List files
-        run: ls -al
-
-      - name: Step 4: Show date and time
-        run: date
+      - name: Print GitHub actor
+        run: echo "This was triggered by ${{ github.actor }}"
