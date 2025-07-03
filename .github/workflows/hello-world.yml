@@ -1,25 +1,23 @@
-name: Trigger Practice
+name: Run Python Script
 
 on:
   push:
     branches:
       - main
-  pull_request:
   workflow_dispatch:
 
 jobs:
-  explore:
+  run-python:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Step 1: Say hello
-        run: echo "👋 Hello, ${{ github.actor }}!"
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Step 2: Show current directory
-        run: pwd
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
-      - name: Step 3: List files
-        run: ls -al
-
-      - name: Step 4: Show date and time
-        run: date
+      - name: Run Python script
+        run: python hello.py
